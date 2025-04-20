@@ -148,7 +148,7 @@ body::before {
 </ul>
 
 
-        <form action="/submit_booking" method="POST" >
+        <form action="/submit_booking" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="package_name" value="{{ package_name }}">
 
             <label for="name" class="required">Your Name:</label>
