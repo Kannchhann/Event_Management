@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Details - KP Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #5a5a5a;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-image: url(/static/img/Wbg.png);
+            padding: 40px 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        .back-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b8e23;
+            position: absolute;
+            top: 20px;
+            left: 70px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #6b8e23;
+            margin-bottom: 40px;
+        }
+        h2 {
+            color: #333;
+        }
+        section {
+            margin-bottom: 50px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .venue-section {
+            background-color: #eaf7e5;
+        }
+        .catering-section {
+            background-color: #e0fde0;
+        }
+        .decor-section {
+            background-color: #d2f7e7;
+        }
+        .text-content {
+            flex: 1;
+        }
+        img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        a {
+            color: #6b8e23;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .bottom-nav-container {
+            margin-top: 30px;
+        }
+        .bottom-nav {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 12px;
+        }
+        .bottom-nav a {
+            font-size: 18px;
+            color: #004d00;
+            font-weight: bold;
+        }
+        .bottom-nav a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="back-icon" onclick="window.history.back();">&larr; Back</div>
+    <div class="container">
+        <h1>How We Can Help Bring Your Wedding to Life</h1>
+
+        <section class="venue-section">
+            <img src="/static/img/W1.jpg" alt="Wedding Venue">
+            <div class="text-content">
+                <h2>Wedding Venue</h2>
+                <p>
+                    KP Events offers breathtaking venues for your wedding. We provide both indoor and outdoor spaces tailored to your special day.
+                </p>
+            </div>
+        </section>
+
+        <section class="catering-section">
+            <img src="/static/img/W2.jpg" alt="Wedding Catering">
+            <div class="text-content">
+                <h2>Wedding Catering</h2>
+                <p>
+                    Delight your guests with our gourmet catering services, offering a variety of cuisines to suit your taste and style.
+                </p>
+                <p>Our menu includes:</p>
+                <ul>
+                    <li>Plated Meals</li>
+                    <li>Buffets</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="decor-section">
+            <img src="/static/img/W3.jpeg" alt="Wedding Decor">
+            <div class="text-content">
+                <h2>Wedding Decor</h2>
+                <p>
+                    Elevate your wedding atmosphere with our bespoke decor packages that cover everything from linens to signage.
+                </p>
+                <p>Our expert team ensures your wedding is both stylish and stress-free.</p>
+                <p>Contact us at <a href="mailto:kpevents@gmail.com">kpevents@gmail.com</a> to learn more about our decor packages.</p>
+            </div>
+        </section>
+    </div>
+
+    <div class="bottom-nav-container">
+        <div class="bottom-nav">
+            <a href="{{ url_for('wp') }}">Our Packages</a>
+            <a href="{{ url_for('contact') }}">Contact Us</a>
+        </div>
+    </div>
+</body>
+</html>

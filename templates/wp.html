@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Packages - KP Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #5a5a5a;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background-image: url(/static/img/Wbg.png);
+            padding: 40px 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+
+        h1 {
+    text-align: center;
+    margin-bottom: 42px;
+    font-size: 36px;
+    color: #0a410c;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0;
+    background-color: #58d158;
+    animation: underlineSlide 1.5s ease-out forwards 0.8s;
+}
+
+@keyframes underlineSlide {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+        .packages-grid {
+             display: grid;
+             grid-template-columns: repeat(3, 1fr);
+             gap: 20px;
+        }
+
+        .package-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+
+        .slider-images img {
+            position: absolute;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slider-images img.active {
+            opacity: 1;
+        }
+
+        .package-info {
+            padding: 15px;
+        }
+
+        .package-info h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .package-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .package-info .price {
+            font-size: 18px;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: #ff4081;
+            font-size: 14px;
+        }
+        .tags 
+        {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #555;
+        }
+
+.tags span {
+    display: inline-block;
+    background-color: #f3f3f3;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.book-button {
+            display: block;
+            margin: 15px auto 0 auto;
+            padding: 10px 20px;
+            background-color: #9bfaa0;
+            color: black;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .book-button:hover {
+            background-color: #def3de;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Our Wedding Packages</h1>
+        <div class="packages-grid">
+
+            <!-- Package 1 -->
+            <div class="package-card">
+                <div class="image-slider" data-images="Goa.jpg,G1.jpeg,G2.jpg">
+                    <div class="slider-images"></div>
+                </div>
+                <div class="package-info">
+                    <h3>The Catholic Wedding</h3>
+                    <p>Sun Tropical Arch, Goa</p>
+                    <p class="price">₹4,00,000 Onwards</p>
+                    <p class="rating">&#9733; 5.0 (79 reviews)</p>
+                    <div class="tags">
+                        
+                        <span>Inhouse & outside decorators</span>
+                       
+                    </div>
+                    
+                    <a href="{{ url_for('book', package_name='The Catholic Wedding') }}">
+                        <button class="book-button">Book This Package</button>
+                    </a>
+
+                    
+
+                </div>
+            </div>
+
+            <!-- Package 2 -->
+            <div class="package-card">
+                <div class="image-slider" data-images="Jaipur.jpg,J1.png,J2.png">
+                    <div class="slider-images"></div>
+                </div>
+                <div class="package-info">
+                    <h3>The Royal Wedding</h3>
+                    <p>The Royal Palace, Jaipur</p>
+                    <p class="price">₹2,50,000 Onwards</p>
+                    <p class="rating">&#9733; 5.0 (19 reviews)</p>
+                    <div class="tags">
+                        <span>Sangeet Night included</span>
+                        <span>Included Honeymoon Package</span>
+                       
+                    </div>
+                    
+                    <a href="{{ url_for('book', package_name='The Royal Wedding') }}">
+    <button class="book-button">Book This Package</button>
+</a>
+
+                </div>
+            </div>
+
+            <!-- Package 3 -->
+            <div class="package-card">
+                <div class="image-slider" data-images="kerela.jpg,kerala1.jpeg,kerala2.png,kerela4.jpg">
+                    <div class="slider-images"></div>
+                </div>
+                <div class="package-info">
+                    <h3>The South Indian Wedding</h3>
+                    <p>Green Cove Resort, Kerala</p>
+                    <p class="price">₹2,00,000 Onwards</p>
+                    <p class="rating">&#9733; 5.0 (2 reviews)</p>
+                    <div class="tags">
+                        <span>Haldi&Reception included</span>
+                        <span>+2 more</span>
+                    </div>
+                    
+                    <a href="{{ url_for('book', package_name='The South Indian Wedding') }}">
+
+
+    <button class="book-button">Book This Package</button>
+</a>
+
+                </div>
+            </div>
+
+            <!-- Package 4 -->
+            <div class="package-card">
+                <div class="image-slider" data-images="ShaniwarWada.jpg,SW1.jpg,SW3.png,SW5.jpeg">
+                    <div class="slider-images"></div>
+                </div>
+                <div class="package-info">
+                    <h3>The Grand Wedding</h3>
+                    <p>Shaniwar Wada, Pune</p>
+                    <p class="price">₹2,00,000 Onwards</p>
+                    <p class="rating">&#9733; 5.0 (2 reviews)</p>
+                    <div class="tags">
+                        <span>Haldi&Reception included</span>
+                        <span>Inhouse & outside decorators</span>
+                        
+                    </div>
+                    
+                    <a href="{{ url_for('book', package_name='The Grand Wedding') }}">
+    <button class="book-button">Book This Package</button>
+</a>
+
+                </div>
+            </div>
+
+           <!-- Package 5 -->
+           <div class="package-card">
+             <div class="image-slider" data-images="WH10.jpg,WH13.jpg,WH12.jpg,WH11.jpeg">
+                 <div class="slider-images"></div>
+             </div>
+             <div class="package-info">
+                 <h3>The Funky Wedding</h3>
+                 <p>Della Resort, Lonavala</p>
+                 <p class="price">₹2,00,000 Onwards</p>
+                 <p class="rating">&#9733; 5.0 (2 reviews)</p>
+                 <div class="tags">
+                     <span>Haldi&Engagement</span>
+                     <span>outside decorators</span>
+                     
+                 </div>
+                 
+                 <a href="{{ url_for('book', package_name='The Funky Wedding') }}">
+    <button class="book-button">Book This Package</button>
+</a>
+
+             </div>
+</div>
+ <!-- Package 6 -->
+ <div class="package-card">
+    <div class="image-slider" data-images="Pujab.jpg,Pun1.jpg,Pun2.jpeg,Pun3.jpg">
+        <div class="slider-images"></div>
+    </div>
+    <div class="package-info">
+        <h3>The Punjabi&Sikhs Wedding</h3>
+        <p>Singh Is Kingh, Punjab</p>
+        <p class="price">₹2,00,000 Onwards</p>
+        <p class="rating">&#9733; 5.0 (2 reviews)</p>
+        <div class="tags">
+            <span>Engagement-Reception included</span>
+            <span>+3 more</span>
+        </div>
+        
+        <a href="{{ url_for('book', package_name='The Punjabi & Sikhs Wedding') }}">
+
+    <button class="book-button">Book This Package</button>
+</a>
+
+    </div>
+</div>
+
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sliders = document.querySelectorAll('.image-slider');
+
+            sliders.forEach(slider => {
+                const imageContainer = slider.querySelector('.slider-images');
+                const imagesList = slider.dataset.images.split(',');
+
+                imagesList.forEach(img => {
+                const imgElement = document.createElement('img');
+                imgElement.src = `/static/img/${img.trim()}`;
+                imageContainer.appendChild(imgElement);
+            });
+
+
+                let currentImageIndex = 0;
+                const images = imageContainer.querySelectorAll('img');
+                images[currentImageIndex].classList.add('active');
+
+                setInterval(() => {
+                    images[currentImageIndex].classList.remove('active');
+                    currentImageIndex = (currentImageIndex + 1) % images.length;
+                    images[currentImageIndex].classList.add('active');
+                }, 3000); // Change image every 3 seconds
+            });
+        });
+    </script>
+</body>
+
+</html>

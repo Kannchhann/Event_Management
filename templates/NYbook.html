@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New-Year Event Booking</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('/static/img/newyearBook.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .container {
+            background: rgba(236, 231, 231, 0.7); /* Light grey background with subtle transparency */
+            padding: 30px;
+            width: 60%;
+            height: 100%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.8s ease-in-out;
+            transform-origin: top;
+        }
+        h2 {
+            text-align: center;
+            color: rgb(90, 25, 163);
+            font-family: cursive;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #fc734a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #6813a1;
+        }
+        .price-info {
+            font-weight: bold;
+            color: #d9534f;
+            margin-top: 5px;
+        }
+        .payment-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .qr-code {
+            width: 200px;
+            margin-top: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        .time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .time {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .time select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 30%; /* Adjusts width of each select box */
+    font-size: 16px;
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .time select {
+      width: 100%; /* Makes select boxes take full width on small screens */
+    }
+  }
+    </style>
+    <script>
+        // Fixed service prices
+        const servicePrices = {
+            "Buffet": 5000,
+            "Meal Starter": 3000,
+            "Dinner": 7000,
+            "Decoration": 10000,
+            "Music & DJ": 5000
+        };
+
+        // Fixed prices for cuisines
+        const cuisinePrices = {
+            "Indian": 4000,
+            "Italian": 4500,
+            "Chinese": 3500,
+            "Mexican": 3800,
+            "Continental": 5000
+        };
+
+        function updatePrice() {
+            const gstRate = 0.18; // 18% GST
+
+            let guests = document.getElementById("guests").value || 1;
+            let basePrice = guests * 100; // Additional ₹100 per guest
+
+            // Calculate price for selected services
+            let serviceTotal = 0;
+            let serviceList = document.querySelectorAll('input[name="services"]:checked');
+            serviceList.forEach(item => {
+                serviceTotal += servicePrices[item.value];
+            });
+
+            // Calculate price for selected cuisines
+            let cuisineTotal = 0;
+            let cuisineList = document.querySelectorAll('input[name="cuisines"]:checked');
+            cuisineList.forEach(item => {
+                cuisineTotal += cuisinePrices[item.value];
+            });
+
+            // Total Price Calculation
+            let totalPrice = basePrice + serviceTotal + cuisineTotal;
+
+            // GST Calculation
+            let gstAmount = totalPrice * gstRate;
+            let finalPrice = totalPrice + gstAmount;
+
+            document.getElementById("price-display").innerHTML = 
+                `Guests: ₹${guests * 100} + Services: ₹${serviceTotal} + Cuisines: ₹${cuisineTotal} + GST (18%): ₹${gstAmount.toFixed(2)} 
+                <br> <strong>Total Price: ₹${finalPrice.toFixed(2)}</strong>`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Book Your New Year Event</h2>
+        <form action="/submit_booking" method="POST" enctype="multipart/form-data">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="guests">Number of Guests:*</label>
+            <input type="number" id="guests" name="guests" min="1" required oninput="updatePrice()">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z]+[0-9]*@gmail\.com" placeholder="abc123@gmail.com">
+
+                            
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" pattern="[6-9]{1}[0-9]{9}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+            <label for="date">Event Date:</label>
+            <input type="date" id="date" name="date" required>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById("date").setAttribute('min', today);
+                });
+            </script>
+
+<label for="time">Event Time:</label>
+<div class="time" style="width: 100%; gap:8px; display: inline-flex;">
+    <select id="timehour" name="timehour" required>
+        <option value="" disabled selected>Hour</option>
+        <script>
+          for(let i = 1; i <= 12; i++) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      
+      <select id="minute" name="minute" required>
+        <option value="" disabled selected>Minute</option>
+        <script>
+          for(let i = 0; i < 60; i += 5) {
+            let min = i < 10 ? '0' + i : i;
+            document.write(`<option value="${min}">${min}</option>`);
+          }
+        </script>
+      </select>
+      
+
+  <select id="ampm" name="ampm" required>
+    <option value="AM">AM</option>
+    <option value="PM">PM</option>
+  </select>
+</div>
+
+            <!-- Available Services -->
+            <label>Select Services:</label>
+            <div>
+                <input type="checkbox" name="services" value="Buffet" onclick="updatePrice()"> Buffet (₹5000)<br>
+                <input type="checkbox" name="services" value="Meal Starter" onclick="updatePrice()"> Meal Starter (₹3000)<br>
+                <input type="checkbox" name="services" value="Dinner" onclick="updatePrice()"> Dinner (₹7000)<br>
+                <input type="checkbox" name="services" value="Decoration" onclick="updatePrice()"> Decoration (₹10,000)<br>
+                <input type="checkbox" name="services" value="Music & DJ" onclick="updatePrice()"> Music & DJ (₹5000)<br>
+            </div>
+
+            <!-- Cuisine Selection -->
+            <label>Select Cuisine:</label>
+            <div>
+                <input type="checkbox" name="cuisines" value="Indian" onclick="updatePrice()"> Indian (₹4000)<br>
+                <input type="checkbox" name="cuisines" value="Italian" onclick="updatePrice()"> Italian (₹4500)<br>
+                <input type="checkbox" name="cuisines" value="Chinese" onclick="updatePrice()"> Chinese (₹3500)<br>
+                <input type="checkbox" name="cuisines" value="Mexican" onclick="updatePrice()"> Mexican (₹3800)<br>
+                <input type="checkbox" name="cuisines" value="Continental" onclick="updatePrice()"> Continental (₹5000)<br>
+            </div>
+
+            <label for="message">Additional Requests:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <p class="price-info" id="price-display">Total Price: ₹0</p>
+
+            <!-- Payment Section -->
+            <div class="payment-section">
+                <h3>Scan & Pay</h3>
+                <p>Use the QR Code below to complete the payment</p>
+                <img src="/static/img/upi_payment_qr.jpg" alt="QR Code for Payment" class="qr-code">
+            </div>
+
+            <label for="payment_screenshot">Upload Payment Screenshot:</label>
+            <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

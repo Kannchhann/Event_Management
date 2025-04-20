@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Christmas Party Celebration</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdf6f6;
+    }
+
+    h2 {
+      color: #b30000;
+    }
+
+    .back-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #8a0833; /* Gold */
+            position: absolute;
+            top: 320px;
+            left: 40px;
+            transition: color 0.3s ease;
+        }
+    
+        .back-icon:hover {
+            color: #db6161; /* Silver */
+        }
+    .hero {
+      position: relative;
+      background: url("/static/img/xmasBG.jpg") no-repeat center center/cover;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-content {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 12px;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .title {
+      font-size: 2.2em;
+      margin-top: 30px;
+      text-align: center;
+      animation: slideDown 1.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .event-section {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      margin: 40px auto;
+      width: 85%;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-container {
+      width: 40%;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 12px;
+      position: relative;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      animation: imageSlide 6s infinite;
+    }
+
+    .image-container img:nth-child(1) { animation-delay: 0s; }
+    .image-container img:nth-child(2) { animation-delay: 2s; }
+    .image-container img:nth-child(3) { animation-delay: 4s; }
+
+    @keyframes imageSlide {
+      0%, 60%, 100% { opacity: 0; }
+      20%, 40% { opacity: 1; }
+    }
+
+    .details {
+      width: 55%;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    .details p1 {
+      color: #a83232;
+    }
+
+    .bottom-nav-container {
+            margin-top: 30px;
+        }
+        .bottom-nav {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 12px;
+        }
+        .bottom-nav a {
+            font-size: 18px;
+            color: #b30000;
+            font-weight: bold;
+        }
+        .bottom-nav a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+        }
+
+    @media screen and (max-width: 768px) {
+      .event-section {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .image-container,
+      .details {
+        width: 100%;
+        padding: 0;
+      }
+
+      .details {
+        margin-top: 20px;
+      }
+    }
+    .gift-gallery img {
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  cursor: pointer;
+}
+
+.gift-gallery img:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+  </style>
+</head>
+<body>
+   
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Magical Christmas Eve Celebrations</h1>
+      <p>Deck the halls, sing carols, and spread holiday cheer with us!</p>
+    </div>
+  </div>
+
+  <h2 class="title">Joyful Christmas Events Planned By Us</h2>
+  <div class="back-icon" onclick="window.history.back();">&larr; Back</div>
+  <div class="event-section">
+    <div class="image-container">
+      <img src="/static/img/xmas1.jpg" alt="Christmas Event 1">
+      <img src="/static/img/xmas2.jpg" alt="Christmas Event 1">
+      <img src="/static/img/xmas3.jpg" alt="Christmas Event 1">
+    </div>
+    <div class="details">
+      <h3>Christmas Gala at Taj</h3>
+      <p1><strong>A Grand Holiday Dinner Celebration</strong></p1>
+      <p><strong>Venue:</strong> Taj Mahal Palace, Mumbai</p>
+      <p><strong>Highlights:</strong> Candle-lit dinner, carol choir, and a Santa meet & greet.</p>
+      <p><strong>Guests:</strong> Families, kids, and VIPs including local celebrities.</p>
+    </div>
+  </div>
+
+  <div class="event-section">
+    <div class="image-container">
+      <img src="/static/img/xmas4.jpg" alt="Christmas Party">
+      <img src="/static/img/xmas5.jpg" alt="Christmas Party">
+      <img src="/static/img/xmas6.jpg" alt="Christmas Party">
+    </div>
+    <div class="details">
+      <h3>Snowflake Bash</h3>
+      <p1><strong>A Fun-Filled Outdoor Snow Party</strong></p1>
+      <p><strong>Venue:</strong> KP Lawns, Malad</p>
+      <p><strong>Highlights:</strong> Snow machine, DJ night, and gift exchanges.</p>
+      <p><strong>Guests:</strong> Open to public – families, couples, and friends.</p>
+    </div>
+  </div>
+
+  <div class="event-section">
+    <div class="image-container">
+      <img src="/static/img/xmas7.jpg" alt="Christmas Party">
+      <img src="/static/img/xmas8.jpg" alt="Christmas Party">
+      <img src="/static/img/xmas9.jpg" alt="Christmas Party">
+    </div>
+    <div class="details">
+        <h3>Midnight Carol Singing</h3>
+        <p1><strong>Experience the joy of soulful melodies!</strong></p1>
+        <p><strong>Location:</strong> St. Mary’s Church, Bandra</p>
+        <p><strong>Includes:</strong> Choir performance, hot cocoa station, community bonfire.</p>
+      </div>
+  </div>
+
+  <div class="event-section bounce-in">
+    <div class="image-container">
+        <img src="/static/img/xmas10.jpg" alt="Christmas Party">
+        <img src="/static/img/xmas11.jpg" alt="Christmas Party">
+        <img src="/static/img/xmas12.jpg" alt="Christmas Party">
+    </div>
+    <div class="details">
+      <h3>Santa’s Fun Zone for Kids</h3>
+      <p1><strong>Let the kids enjoy Christmas too!</strong></p1>
+      <p><strong>Location:</strong> HappyLand Park, Powai</p>
+      <p><strong>Activities:</strong> Puppet shows, magic tricks, mini rides, and gift hunts.</p>
+    </div>
+  </div>  
+
+  <h2 style="text-align:center;">🎁 Popular Christmas Gifts</h2>
+<div class="gift-gallery" style="display: flex; overflow-x: auto; gap: 20px; padding: 20px;">
+  <img src="/static/img/gifts1.jpg" style="width: 180px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts2.jpg" style="width: 200px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts3.jpg" style="width: 180px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts4.jpg" style="width: 200px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts5.jpg" style="width: 200px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts6.jpeg" style="width: 200px; height: 200px; border-radius: 12px;">
+  <img src="/static/img/gifts3.jpg" style="width: 200px; height: 200px; border-radius: 12px;">
+</div>
+
+<div id="countdown" style="text-align:center; font-size: 1.5em; color: #b30000; margin-top: 20px;"></div>
+
+
+
+  <div class="santa"></div>
+<style>
+  .santa {
+    background: url('/static/img/santa-sleigh.gif') no-repeat;
+    background-size: contain;
+    width: 150px;
+    height: 100px;
+    position: fixed;
+    top: 10%;
+    left: -200px;
+    z-index: 999;
+    animation: moveSanta 15s linear infinite;
+  }
+
+  @keyframes moveSanta {
+    from { left: -200px; }
+    to { left: 110%; }
+  }
+</style>
+
+  
+  <script>
+    const sections = document.querySelectorAll('.event-section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(section => observer.observe(section));
+
+  const countDownDate = new Date("Dec 25, 2025 00:00:00").getTime();
+  const countdown = document.getElementById("countdown");
+  
+  const x = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    countdown.innerHTML = `🎅 Time Left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    
+    if (distance < 0) {
+      clearInterval(x);
+      countdown.innerHTML = "🎉 Merry Christmas!";
+    }
+  }, 1000);
+
+</script>
+
+
+  <div class="bottom-nav-container">
+    <div class="bottom-nav">
+      <a href="{{ url_for('cbook') }}">Book Now</a>
+      <a href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+  
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="website icon" type="png" href="static/img/Events-Logo.png">
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+  <!-- Main content for Terms & Conditions Page -->
+  <div class="terms-container">
+    <h2>Terms & Conditions</h2>
+    <p>Welcome to The Event Management Platform!</p>
+
+    <div class="terms-content">
+      <h3>1. Acceptance of Terms</h3>
+      <ul>
+      <li>By accessing and using the Event Management Platform ("the Platform"), you acknowledge that you have read, understood, and agreed to the terms set forth below. If you do not agree to these terms, please discontinue the use of the Platform immediately. The terms and conditions apply to all visitors, users, and others who access or use the service.</li>
+      <li>The Platform reserves the right to update or modify these terms at any time, with changes effective as soon as they are posted on this page. It is your responsibility to review the Terms & Conditions periodically.</li>
+      </ul>
+      <h3>2. User Responsibilities</h3>
+      <ul>
+        <li>You are required to provide accurate and up-to-date personal information when registering for an account or booking events on the Platform.</li>
+        <li> You agree to maintain the confidentiality of your login credentials (username and password). You are responsible for any activity that occurs under your account.</li>
+        <li>You agree to use the Platform in compliance with all local, state, and national laws and regulations, and you will not use the Platform for illegal activities, including fraudulent bookings or data manipulation.</li>
+      </ul>
+
+      <h3>3. Event Registration & Management</h3>
+      <p>All event registrations are subject to availability and the terms set by the event organizers.
+        You agree to review all event details before registering, including the event description, date, time, location, and any fees associated with it.
+        The Platform does not guarantee event availability and may cancel or modify event details. In such cases, registered users will be notified and may receive a refund if applicable.
+        By registering for an event, you agree to comply with any event-specific policies set by the organizer.</p>
+
+      <h3>4. Privacy Policy</h3>
+      <ul>
+        <li>The Platform respects your privacy. The collection, use, and storage of your personal data will be in accordance with the Platform’s Privacy Policy.
+        </li>
+        <li>By using the Platform, you consent to the collection and processing of your personal data as described in the Privacy Policy.</li>
+        <li>Personal data may be used for purposes such as registration, event management, customer support, and marketing (where applicable).
+        </li>
+        <li>You have the right to access, update, or delete your personal information by contacting customer support.</li>
+      </ul>
+      <h3>5. Intellectual Property</h3>
+      <p>All content, logos, images, designs, and trademarks displayed on the Platform are the intellectual property of the Event Management Platform or its licensors.
+        You are granted a limited, non-exclusive, non-transferable license to access and use the Platform for personal or professional event-related activities.
+        You may not copy, reproduce, distribute, or sell any of the content from the Platform without prior written consent from the Platform.</p>
+
+      <h3>6. User-Generated Content</h3>
+      <p>You may post reviews, comments, or opinions about events or the Platform. By doing so, you grant the Platform the right to use, display, and share your content in relation to the Platform.
+        All user-generated content must comply with applicable laws, including copyright, and must not be defamatory, offensive, or violate the rights of others.
+        The Platform reserves the right to remove any content that violates these terms or is deemed inappropriate.</p>
+
+      <h3>7. Cookies</h3>
+      <p>We use cookies to enhance the user experience. By continuing to use the platform, you consent to our use of cookies as outlined in our <a href="#">Privacy Policy</a>.You can control cookie settings through your browser; however, disabling cookies may affect the functionality of the Platform.</p>
+
+      <h3>8. Limitation of Liability</h3>
+      <p>The platform is provided "as is," without any warranties. We shall not be liable for any loss, damage, or injury arising from the use of the platform.</p>
+
+      <h3>9. Governing Law</h3>
+      <p>These Terms & Conditions will be governed by and construed in accordance with the laws of India, without regard to its conflict of law principles.
+        Any legal actions or proceedings under these terms shall be brought exclusively in the competent courts of India, and you hereby consent to the jurisdiction of those courts.</p>
+
+      <h3>10. Contact Information</h3>
+      <p>If you have any questions or concerns, please contact us at : 
+        <ul>
+            <li><p>Email: <a href="mailto:kpeventmanagement@events.com">kpeventmanagement@events.com</a></p>
+            </li>
+            <li><p>Phone: <a href="tel:+919998180008">+91 884-769-0123</a>, <a href="tel:+919724505982">+91 930-704-0122</a></li>
+              <li><p>Address: <a href="https://maps.app.goo.gl/BC8yJ8VKaPaprX2k7" target="_blank">Bridge, Chaitanya Nagar, Davri Nagar, Vakola, Santacruz East, Mumbai, Maharashtra 400055</a>
+        </ul>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>We specialize in planning unforgettable birthdays, weddings, corporate events, and parties. From venue selection to final execution, we ensure every event is seamless and memorable.</p>
+            <a href="{{ url_for('about') }}" class="read-more">Read More</a>
+        </div>
+        
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('party') }}">Party</a></li>
+                <li><a href="{{ url_for('business') }}">Corporate</a></li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#faq-section">FAQs</a></li> <!-- This link will now scroll to the FAQ section -->
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.facebook.com" class="icon facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/kpevents45/" class="icon instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/919307040184?text=Hello,%20I%20need%20assistance%20with%20an%20event" class="icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Event Management Co. | All Rights Reserved</p>
+    </div>
+</footer>
+</body>
+</html>

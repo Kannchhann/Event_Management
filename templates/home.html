@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System - Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <div class="slider-container">
+        <div class="video-slide active">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/bdayHome.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/christmasvd.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/Couplevd.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/anniversaryvd.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-slide ">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/meetingHome.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/partyHome.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/wedding.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+       
+        <div class="video-slide">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='img/clubHome.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+        <div class="slider-overlay"></div>
+
+    <div class="slider-content">
+        Your Vision, Our Innovation – KP Events
+        </div>
+    </div>
+
+    
+
+    
+    
+    <!-- Featured Events Section -->
+    <section class="featured-events-container">
+        <h2>Featured Events</h2>
+        <div class="featured-events-wrapper">
+            <div class="featured-events">
+                <div class="box"><img src="/static/img/F1.png" alt=""><p>Wedding</p></div>
+                <div class="box"><img src="/static/img/F2.png" alt=""><p>Business</p></div>
+                <div class="box"><img src="/static/img/F3.png" alt=""><p>Birthday</p></div>
+                <div class="box"><img src="/static/img/F4.png" alt=""><p>Networking</p></div>
+                <div class="box"><img src="/static/img/F5.png" alt=""><p>Anniversary</p></div>
+                <div class="box"><img src="/static/img/F6.png" alt=""><p>Branding</p></div>
+                <div class="box"><img src="/static/img/F7.png" alt=""><p>Christmas</p></div>
+                <div class="box"><img src="/static/img/F8.png" alt=""><p>Feliciation</p></div>
+    
+                <!-- Duplicating for infinite scroll effect -->
+                <div class="box"><img src="/static/img/F1.png" alt=""><p>Wedding</p></div>
+                <div class="box"><img src="/static/img/F2.png" alt=""><p>Meetings</p></div>
+                <div class="box"><img src="/static/img/F3.png" alt=""><p>Birthday</p></div>
+                <div class="box"><img src="/static/img/F4.png" alt=""><p>Workshops</p></div>
+            </div>
+        </div>
+    </section>
+    
+
+
+<!-- Reviews Section -->
+<section class="reviews" id="reviews">
+    <h2 class="section-title">What Our Users Say</h2>
+
+    <div class="reviews-container">
+        <!-- Review 1 -->
+        <div class="review-box">
+            <img src="/static/img/p1.jpg" alt="User Image" class="review-img">
+            <h3 class="review-name">Anna Stephan</h3>
+            <p class="review-text">“This platform made our event planning so much easier! Everything was smooth and well-coordinated.”</p>
+            <div class="review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-box">
+            <img src="/static/img/p2.jpg" alt="User Image" class="review-img">
+            <h3 class="review-name">Phoebe Berlin</h3>
+            <p class="review-text">“I loved the professional approach and user-friendly design. Bookings were seamless and fast!”</p>
+            <div class="review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-box">
+            <img src="/static/img/p3.jpg" alt="User Image" class="review-img">
+            <h3 class="review-name">Christian Roy</h3>
+            <p class="review-text">“A decent experience. There’s room for improvement, but overall it helped manage my event better.”</p>
+            <div class="review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-empty"></i>
+                <i class="fas fa-star-empty"></i>
+            </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="review-box">
+            <img src="/static/img/p4.jpg" alt="User Image" class="review-img">
+            <h3 class="review-name">Liza D'Souza</h3>
+            <p class="review-text">“Quick service, helpful team, and a great overall vibe. My guests loved the event setup!”</p>
+            <div class="review-stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star-empty"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 
+
+
+
+
+
+   
+   
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KPevents | All Rights Reserved.</p>
+            <p><a href="{{ url_for('contact') }}">Contact Us</a> | <a href="{{ url_for('about') }}">About Us</a></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+ 
+
+    
+</body>
+</html>

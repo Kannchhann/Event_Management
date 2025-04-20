@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="png" href="static/img/Events-Logo.png">
+  <title>Christmas Event Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('/static/img/christmasBook.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+          }
+
+.container {
+    position: relative;
+    width: 60%;
+    height: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: rgba(246, 255, 244, 0.8); /* Semi-transparent background for the form */
+    z-index: 1; /* Ensure form content stays above the blurred background */
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInMove 1s ease-out forwards;
+}
+@keyframes fadeInMove {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .time select {
+      width: 100%; /* Makes select boxes take full width on small screens */
+    }
+  }
+
+  .reminder-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333; /* Dark grey color for reminder label */
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+    
+        .reminder-container input {
+            display: none;
+        }
+    
+        .reminder-container label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding-left: 50px;
+        }
+    
+        .reminder-container label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 22px;
+            background: #ccc;
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+    
+        .reminder-container label::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .reminder-container input:checked + label::before {
+            background: #3099ee; /* Steel Blue for toggle when checked */
+        }
+    
+        .reminder-container input:checked + label::after {
+            transform: translate(20px, -50%);
+        }
+    
+
+    h2 {
+      text-align: center;
+      color: rgb(13, 97, 2);
+      font-family: cursive;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 98%;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background: rgb(13, 97, 2);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0b4401;
+    }
+
+    .price-info {
+      font-weight: bold;
+      color: rgb(13, 97, 2);
+      margin-top: 5px;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .qr-code {
+      width: 200px;
+      margin-top: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+    input, select, textarea, button {
+        font-size: 16px;
+      }
+
+      .qr-code {
+        width: 150px;
+      }
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 15px;
+      }
+      }
+      .time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .time {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .time select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 30%; /* Adjusts width of each select box */
+    font-size: 16px;
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .time select {
+      width: 100%; /* Makes select boxes take full width on small screens */
+    }
+  }
+  </style>
+  <script>
+    const themePrices = {
+      "Winter Wonderland": 5500,
+      "Santa’s Sleigh Bash": 5800,
+      "Cozy Cabin Christmas": 5200,
+      "Gingerbread Gala": 5000
+    };
+
+    const cuisinePrices = {
+      "Traditional Christmas Feast": 4000,
+      "Hot Chocolate & Treats": 2500,
+      "Italian Christmas": 3500,
+      "Fusion Fiesta": 3300,
+      "Gourmet Buffet": 4500
+    };
+
+    function updatePrice() {
+      const gstRate = 0.18;
+
+      let theme = document.getElementById("theme").value;
+      let guests = document.getElementById("guests").value || 1;
+      let basePrice = themePrices[theme] || 0;
+
+      let totalPrice = basePrice + (guests * 100);
+
+      let cuisineTotal = 0;
+      let selectedCuisine = document.querySelector('input[name="cuisine"]:checked');
+      if (selectedCuisine) {
+        cuisineTotal = cuisinePrices[selectedCuisine.value];
+      }
+
+      totalPrice += cuisineTotal;
+
+      let gstAmount = totalPrice * gstRate;
+      let finalPrice = totalPrice + gstAmount;
+
+      document.getElementById("price-display").innerHTML = 
+        `Base Price: ₹${basePrice} + Guests: ₹${guests * 100} + Cuisine: ₹${cuisineTotal} + GST (18%): ₹${gstAmount.toFixed(2)} 
+        <br><strong>Total Price: ₹${finalPrice.toFixed(2)}</strong>`;
+    }
+    
+  </script>
+</head>
+<body>
+  <div class="snowfall"></div>
+
+  <div class="container">
+    <h2>Book Your Christmas Event</h2>
+    <form action="/submit_booking" method="POST" enctype="multipart/form-data">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="guests">Number of Guests:</label>
+      <input type="number" id="guests" name="guests" min="1" required oninput="updatePrice()">
+
+      <label for="email">Email:</label>
+<input type="email" id="email" name="email" pattern="[a-zA-Z]+[0-9]*@gmail\.com" placeholder="abc123@gmail.com">
+
+
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" pattern="[6-9]{1}[0-9]{9}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+      <label for="date">Event Date:</label>
+      <input type="date" id="date" name="date" required>
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              const today = new Date().toISOString().split('T')[0];
+              document.getElementById("date").setAttribute('min', today);
+          });
+      </script>
+
+      
+<label for="time">Event Time:</label>
+        <div class="time" style="width: 100%; gap:8px; display: inline-flex;">
+          <select id="timehour" name="timehour" required>
+            <option value="" disabled selected>Hour</option>
+            <script>
+              for(let i = 1; i <= 12; i++) {
+                document.write(`<option value="${i}">${i}</option>`);
+              }
+            </script>
+          </select>
+          
+          <select id="minute" name="minute" required>
+            <option value="" disabled selected>Minute</option>
+            <script>
+              for(let i = 0; i < 60; i += 5) {
+                let min = i < 10 ? '0' + i : i;
+                document.write(`<option value="${min}">${min}</option>`);
+              }
+            </script>
+          </select>
+          
+        
+          <select id="ampm" name="ampm" required>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+
+        
+
+      <label for="theme">Select Theme:</label>
+      <select id="theme" name="theme" required onchange="updatePrice()">
+        <option value="Winter Wonderland">Winter Wonderland (₹5500)</option>
+        <option value="Santa’s Sleigh Bash">Santa’s Sleigh Bash (₹5800)</option>
+        <option value="Cozy Cabin Christmas">Cozy Cabin Christmas (₹5200)</option>
+        <option value="Gingerbread Gala">Gingerbread Gala (₹5000)</option>
+      </select>
+
+      <label>Select Cuisine:</label>
+      <div>
+        <label><input type="radio" name="cuisine" value="Traditional Christmas Feast" onclick="updatePrice()"> Traditional Christmas Feast (₹4000)</label><br>
+        <label><input type="radio" name="cuisine" value="Hot Chocolate & Treats" onclick="updatePrice()"> Hot Chocolate & Treats (₹2500)</label><br>
+        <label><input type="radio" name="cuisine" value="Italian Christmas" onclick="updatePrice()"> Italian Christmas (₹3500)</label><br>
+        <label><input type="radio" name="cuisine" value="Fusion Fiesta" onclick="updatePrice()"> Fusion Fiesta (₹3300)</label><br>
+        <label><input type="radio" name="cuisine" value="Gourmet Buffet" onclick="updatePrice()"> Gourmet Buffet (₹4500)</label><br>
+      </div>
+
+      <label for="message">Additional Requests:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <div class="reminder-container">
+        <input type="checkbox" id="reminder" name="reminder">
+        <label for="reminder"></label>
+        <span>Yes, send a reminder to my email.</span>
+    </div>
+
+      <p class="price-info" id="price-display">Total Price: ₹0</p>
+
+      <div class="payment-section">
+        <h3>Scan & Pay</h3>
+        <p>Use the QR Code below to complete the payment</p>
+        <img src="/static/img/upi_payment_qr.jpg" alt="QR Code for Payment" class="qr-code">
+      </div>
+
+      <label for="payment_screenshot">Upload Payment Screenshot:</label>
+      <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

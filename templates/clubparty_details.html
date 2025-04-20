@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Party - DJ Night | KP Events</title>
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #5d5db4; /* Midnight Blue */
+            color: #f9f9f9;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+            padding: 50px 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+    
+        .back-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #FFD700; /* Gold */
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            transition: color 0.3s ease;
+        }
+    
+        .back-icon:hover {
+            color: #c0c0c0; /* Silver */
+        }
+    
+        h1 {
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            background: url('https://www.transparenttextures.com/patterns/glitter.png'),
+                        linear-gradient(90deg, #d4af37, #ffffff, #d4af37); /* Gold & White */
+            background-size: 150%, 300%;
+            background-blend-mode: overlay;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 3s infinite linear;
+            letter-spacing: 2px;
+        }
+    
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 0%, 0% 50%;
+            }
+            100% {
+                background-position: 100% 0%, 100% 50%;
+            }
+        }
+    
+        h2 {
+    font-size: 2em;
+    color: #c0c0c0;
+    text-shadow: 0 0 4px #ffffff88, 0 0 8px #cccccc88;
+    transition: color 0.3s ease;
+}
+
+    
+        h2:hover {
+            color: #c0c0c0; /* Silver */
+        }
+    
+        section {
+            margin-bottom: 60px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background-color 0.4s ease;
+            background-color: #1a1a40;
+            animation: slideInLeft 1s ease forwards;
+        }
+    
+        .venue-section {
+            background: linear-gradient(to right, #1a1a40, #2d2d69); /* Deep Blue */
+        }
+    
+        .dj-section {
+            background: linear-gradient(to right, #1e1e3f, #4848bb);
+        }
+    
+        .snacks-section {
+            background: linear-gradient(to right, #26264d, #7777d4);
+        }
+    
+        .packages-section {
+            background: linear-gradient(to bottom, #1a1a40, #2e2e5e);
+            flex-direction: column;
+        }
+    
+        .text-content {
+            flex: 1;
+        }
+    
+        img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+    
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(255, 255, 255, 0.4);
+        }
+    
+        .package-box {
+            background: linear-gradient(to bottom right, #1e1e3f, #2e2e5e);
+            border: 2px solid #FFD700;
+            border-radius: 12px;
+            padding: 25px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #FFD700;
+            animation: zoomFadeIn 1s ease forwards;
+        }
+    
+        .package-box:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 0 20px #f0f0f0aa;
+        }
+    
+        .package-box h3 {
+            color: #FF6347; /* Firework Orange */
+            margin-bottom: 10px;
+            font-size: 1.7em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    
+        .package-box .price {
+            font-size: 24px;
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    
+        .package-box ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+    
+        .package-box ul li {
+            margin: 10px 0;
+            color: #f0f0f0;
+            font-weight: 400;
+            position: relative;
+            padding-left: 25px;
+        }
+    
+        .package-box ul li::before {
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            content: '✔';
+        }
+    
+        .book-button {
+            background-color: #FFD700;
+            color: #0d0d2b;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: pulseGlow 2s infinite;
+        }
+    
+        .book-button:hover {
+            background-color: #FF6347; /* Firework Orange */
+            transform: scale(1.08);
+        }
+    
+        .bottom-nav-container {
+            margin-top: 50px;
+        }
+    
+        .bottom-nav {
+            background-color: #1a1a40;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            width: 100%;
+            border-radius: 12px;
+            animation: fadeInUp 1.2s ease;
+        }
+    
+        .bottom-nav a {
+            font-size: 18px;
+            color: #FFD700;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+    
+        .bottom-nav a:hover {
+            color: #fdf9f6;
+            text-decoration: underline;
+        }
+    
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px #FFD700;
+            }
+            50% {
+                box-shadow: 0 0 20px #FF6347;
+            }
+            100% {
+                box-shadow: 0 0 10px #FFD700;
+            }
+        }
+    
+        @keyframes zoomFadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="back-icon" onclick="window.history.back();">&larr; Back</div>
+    <div class="container">
+        <h1>Celebrate Your Night with Our Club Party Experience</h1>
+
+        <section class="venue-section">
+            <img src="/static/img/club1.jpg" alt="Club Venue">
+            <div class="text-content">
+                <h2>Club Venue</h2>
+                <p>KP Events offers high-energy venues perfect for DJ nights and club parties. With lights, sound, and space to dance, we set the stage for unforgettable celebrations.</p>
+            </div>
+        </section>
+
+        <section class="dj-section">
+            <img src="/static/img/club2.jpg" alt="DJ and Music">
+            <div class="text-content">
+                <h2>DJ and Music</h2>
+                <p>Our professional DJs spin the latest beats to keep your guests on the dance floor. Choose from EDM, Bollywood, Hip-Hop, and more.</p>
+            </div>
+        </section>
+
+        <section class="snacks-section">
+            <img src="/static/img/club3.jpg" alt="Drinks and Snacks">
+            <div class="text-content">
+                <h2>Drinks and Snacks</h2>
+                <p>Enjoy delicious appetizers and a variety of beverages to keep the energy high all night long. Non-alcoholic and mocktail options available.</p>
+            </div>
+        </section>
+
+        <section class="packages-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">Our Club Party Packages</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+                <div class="package-box">
+                    <h3>Silver Party Package</h3>
+                    <p class="price">₹14,999</p>
+                    <ul>
+                        <li>Venue for 4 hours</li>
+                        <li>Basic DJ Setup</li>
+                        <li>Mocktails + Light Snacks</li>
+                        
+                        <li>Selfie Point</li>
+                        <li>Basic Lounge Area for Relaxation</li>
+                    </ul>
+                    <a href="{{ url_for('clubBook') }}?package=Silver Party Package&price=14999" class="book-button">Book Now</a>
+                </div>
+
+                <div class="package-box">
+                    <h3>Gold Party Package</h3>
+                    <p class="price">₹24,999</p>
+                    <ul>
+                        <li>Venue for 6 hours</li>
+                        <li>DJ with Lights & Smoke</li>
+                        <li>Snacks + Drinks</li>
+                        <li>Theme-based Decor</li>
+                        <li>Photo Booth with Props</li>
+                      
+                    </ul>
+                    <a href="{{ url_for('clubBook') }}?package=Gold Party Package&price=24999" class="book-button">Book Now</a>
+                </div>
+
+                <div class="package-box">
+                    <h3>Platinum Party Package</h3>
+                    <p class="price">₹39,999</p>
+                    <ul>
+                        <li>Full Night Venue</li>
+                        <li>Premium DJ + Live Artist</li>
+                        <li>Food + Mocktail Bar</li>
+                        <li>Laser Lights + Smoke Machine</li>
+                        <li>VIP Lounge Access</li>
+                    </ul>
+                    <a href="{{ url_for('clubBook') }}?package=Platinum Party Package&price=39999" class="book-button">Book Now</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="bottom-nav-container">
+            <div class="bottom-nav">
+            
+                <a href="/contact">Contact Us</a>
+       
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Package - KP Events</title>
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('/static/img/clubBook.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    
+        .booking-container {
+            background: rgba(236, 231, 231, 0.7); /* Light grey background with subtle transparency */
+            padding: 30px;
+            width: 60%;
+            height: 100%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.8s ease-in-out;
+            transform-origin: top;
+        }
+    
+        h2, h3 {
+            text-align: center;
+            color: #27292a; /* Dark Slate Gray for headings */
+        }
+    
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        .time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .time {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .time select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 30%; /* Adjusts width of each select box */
+    font-size: 16px;
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .time select {
+      width: 100%; /* Makes select boxes take full width on small screens */
+    }
+  }
+
+    
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333; /* Dark grey color for labels */
+        }
+    
+        .reminder-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333; /* Dark grey color for reminder label */
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+    
+        .reminder-container input {
+            display: none;
+        }
+    
+        .reminder-container label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding-left: 50px;
+        }
+    
+        .reminder-container label::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 22px;
+            background: #ccc;
+            border-radius: 50px;
+            transition: background 0.3s;
+        }
+    
+        .reminder-container label::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out;
+        }
+    
+        .reminder-container input:checked + label::before {
+            background: #3099ee; /* Steel Blue for toggle when checked */
+        }
+    
+        .reminder-container input:checked + label::after {
+            transform: translate(20px, -50%);
+        }
+    
+        .qr-section {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+    
+        .qr-section img {
+            width: 150px;
+            height: auto;
+        }
+    
+        .scan-text {
+            color: #2691e8; /* Steel Blue */
+            cursor: pointer;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    
+        .scan-text:hover {
+            color: #4012e7; /* Cadet Blue on hover */
+        }
+    
+        .required::after {
+            content: " *";
+            color: red;
+        }
+    
+        input, select, textarea {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    
+        button {
+            margin-top: 20px;
+            background-color: #3999e8; /* Steel Blue */
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    
+        button:hover {
+            background-color: #4012e7; /* Cadet Blue on hover */
+        }
+    
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+    
+        ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            background-color: #f5f5f5; /* Light grey for the list background */
+            border-left: 5px solid #4682B4; /* Steel Blue border */
+            border-radius: 6px;
+            padding: 23px;
+        }
+    
+        .screenshot-container {
+            margin-top: 20px;
+            width: 97%;
+        }
+    
+        .screenshot-container label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #333; /* Dark grey color for labels */
+        }
+    
+        .screenshot-container input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            background: #f9f9f9;
+        }
+    
+        .screenshot-container .error {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .time-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .time {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .time select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 30%; /* Adjusts width of each select box */
+    font-size: 16px;
+  }
+
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .time select {
+      width: 100%; /* Makes select boxes take full width on small screens */
+    }
+  }
+    </style>
+    
+</head>
+<body data-price="{{ base_price }}">
+    <div class="booking-container">
+        <h2>Book Your Package - {{ package_name }}</h2>
+
+        <!-- Display Package Details -->
+        <h3><strong>What This Package Offers:</strong></h3>
+        <ul>
+            {% for item in package_details %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Booking Form -->
+        <form action="/submit_booking" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="package_name" value="{{ package_name }}">
+
+            <label for="name" class="required">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" pattern="[a-zA-Z]+[0-9]*@gmail\.com" placeholder="abc123@gmail.com">
+
+
+            <label for="phone" class="required">Phone Number (10 digits):</label>
+            <input type="text" id="phone" name="phone" pattern="[6-9]{1}[0-9]{9}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+            <div class="error" id="phoneError">Please enter a valid 10-digit phone number.</div>
+           
+            <label for="guests" class="required">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" min="1" required>
+
+            <label for="date">Event Date:</label>
+            <input type="date" id="date" name="date" required>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    const today = new Date().toISOString().split('T')[0];
+                    document.getElementById("date").setAttribute('min', today);
+                });
+            </script>
+
+<label for="time">Event Time:</label>
+<div class="time" style="width: 100%; gap:8px; display: inline-flex;">
+    <select id="timehour" name="timehour" required>
+        <option value="" disabled selected>Hour</option>
+        <script>
+          for(let i = 1; i <= 12; i++) {
+            document.write(`<option value="${i}">${i}</option>`);
+          }
+        </script>
+      </select>
+      
+      <select id="minute" name="minute" required>
+        <option value="" disabled selected>Minute</option>
+        <script>
+          for(let i = 0; i < 60; i += 5) {
+            let min = i < 10 ? '0' + i : i;
+            document.write(`<option value="${min}">${min}</option>`);
+          }
+        </script>
+      </select>
+      
+
+  <select id="ampm" name="ampm" required>
+    <option value="AM">AM</option>
+    <option value="PM">PM</option>
+  </select>
+</div>
+         
+
+            <label for="message">Additional Requests (Optional):</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <div class="reminder-container">
+                <input type="checkbox" id="reminder" name="reminder">
+                <label for="reminder"></label>
+                <span>Yes, send a reminder to my email.</span>
+            </div>
+
+            <label for="total-cost">Total Cost (Including 18% GST):</label>
+            <input type="text" id="total-cost" name="total-cost" readonly value="₹{{ price }}">
+            
+
+            <p class="scan-text" onclick="showQR()">Scan the QR below</p>
+            <div class="qr-section" id="qr-section">
+                <img src="/static/img/upi_payment_qr.jpg" alt="QR Code for Payment">
+            </div>
+
+            <div class="payment_screenshot">
+                <label for="payment_screenshot">Upload Screenshot of Payment:</label>
+                <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+            </div>
+
+            <button type="submit">Submit Booking</button>
+        </form>
+    </div>
+
+    <script>
+        // Calculate and fill the total cost on page load based on the selected package price
+        window.onload = function() 
+        {
+            // Get the price of the selected package from Flask
+            var basePrice = { price }; // Correct serialization for JavaScript
+    
+            // Ensure the basePrice is a valid number
+            if (isNaN(basePrice)) {
+                console.error("Price is not a valid number");
+                return;
+            }
+    
+            // Calculate GST (18%) and total cost
+            var gst = basePrice * 0.18;
+            var totalCost = basePrice + gst;
+    
+            // Fill the total cost field
+            document.getElementById("total-cost").value = `₹${totalCost.toFixed(2)}`;
+
+            // Format as currency
+        };
+    
+        // Function to show the QR code section
+        function showQR() {
+            const qrSection = document.getElementById("qr-section");
+            qrSection.style.display = qrSection.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+    
+    
+    
+</body>
+</html>

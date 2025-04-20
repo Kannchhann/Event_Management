@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <main>
+        <section class="about-us">
+            <div class="container">
+                <h2>About Us</h2>
+                <div class="about-columns">
+                    <div class="about-column">
+                        <h3>Our Story</h3>
+                        <p>Founded in 2024, Event Management System was born from a passion to make events more accessible and enjoyable for everyone. We strive to bring people together through diverse events, from corporate functions to vibrant festivals.</p>
+                    </div>
+
+                    <div class="about-column">
+                        <h3>Our Mission</h3>
+                        <p>Our mission is simple: to connect people with unforgettable events, helping organizers reach their audience and attendees discover experiences that last a lifetime. We offer seamless, easy-to-use event management solutions for all.</p>
+                    </div>
+
+                    <div class="about-column">
+                        <h3>Why Choose Us</h3>
+                        <ul>
+                            <li>Innovative event solutions</li>
+                            <li>User-friendly platform</li>
+                            <li>Comprehensive event management tools</li>
+                            <li>Proven track record of successful events</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="about-stats">
+                    <div class="stat">
+                        <h4>100+</h4>
+                        <p>Events Hosted</p>
+                    </div>
+                    <div class="stat">
+                        <h4>50k+</h4>
+                        <p>Attendees Served</p>
+                    </div>
+                    <div class="stat">
+                        <h4>5+</h4>
+                        <p>Years of Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h4>200+</h4>
+                        <p>Organizers Partnered</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- Owners Section -->
+<section class="owners">
+    <h2>Owners - People Behind the Management</h2>
+    <div class="owners-layout">
+        <!-- Owner 1 -->
+        <div class="owner">
+            <img src="static/img/kanchan.png" alt="Owner Image" class="owner-img">
+            <div class="owner-details">
+                <h3>Kanchan Sali</h3>
+                <p>Kanchan is the co-founder of Event Management System with over 10 years of experience in event planning and organization. She is passionate about making events unforgettable and seamless for both attendees and organizers. Kanchan's expertise is key to the platform's success.</p>
+            </div>
+        </div>
+
+        <!-- Owner 2 -->
+        <div class="owner">
+            <img src="static/img/prerna.jpg" alt="Owner Image" class="owner-img">
+            <div class="owner-details">
+                <h3>Prerna Gupta</h3>
+                <p>Prerna, also a co-founder, brings a background in technology and innovation to the team. Her skills in tech development have allowed Event Management System to provide top-notch event management solutions that are user-friendly and effective. Prerna's leadership continues to drive the company forward.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+</section>
+</main>
+<!-- WhatsApp Button -->
+<a href="https://wa.me/919307040184?text=Hello,%20I%20need%20assistance%20with%20an%20event"  target="_blank" id="whatsapp-button">
+    <img src="static/img/whatsapp.png" alt="WhatsApp" />
+</a>
+
+<footer>
+<div class="container">
+    <p>&copy; 2025 KPevents | All Rights Reserved.</p>
+    <p><a href="{{ url_for('home') }}">Home</a> | <a href="{{ url_for('contact') }}">Contact Us</a></p>
+</div>
+</footer>
+
+<script src="static/js/scripts.js"></script>
+</body>
+</html>

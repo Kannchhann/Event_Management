@@ -1,0 +1,103 @@
+★ Important Links
+
+✅Get fastest Hosting with Free Domain
+https://webtechnicaltips.com/go/bluehost
+
+
+
+Theme 
+Astra
+
+Plugin
+Event Manager and Tickets Selling Plugin for WooCommerce
+WooCommerce
+WordPress Importer
+Spectra
+Redirection
+Gateway(Razorpay or Instamojo)
+
+Pages
+
+Home
+About Us
+Contact Us
+Submit Event
+Blog
+Terms & Condition
+Events
+Party(Category)
+
+
+
+
+Theme Color Code: #C20000
+Theme Font : Poppins
+
+Home Page
+
+Upcoming Event
+[event-list style='grid' pagination='carousal' carousal-dots='yes' carousal-nav='yes' column=3]
+
+Artist Code
+[event-speaker-list]
+
+Event in Delhi
+[event-list city='Delhi' show='3']
+
+Event Page Short Code
+[event-list column=3 search-filter='yes']
+
+Party Category Short Code
+[event-list cat='25']
+
+
+
+Css Code
+
+h3.ex-sec-title {background: #c20000!important;}
+.df-ico i {background: #c20000!important;}
+.mep-default-sidrbar-address ul li i {background: #c20000!important;}
+.mep-default-sidrbar-social ul li a{background: #c20000!important;}
+.mep-default-sidrbar-events-schedule ul li i{background: #c20000!important;}
+
+.mep-default-sidrbar-meta p a{font-size: 18px!important; color: #c20000!important;}
+
+.mep-default-sidrbar-meta i{color: #c20000!important;}
+
+.mep-list-footer ul li i{color: #c20000!important;}
+
+
+.mep-events-wrapper strong {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.mep-list-header:before{border-left: 5px solid #c20000;}
+h3.mep_list_date {
+    color:#c20000!important;
+}
+
+.ex-sec-title { background: #000;
+}
+
+.mep-default-sidebar-speaker-list ul li {
+width:150px!important; text-decoration:none!important;
+margin: 0 20px; padding:0px;}
+
+.mep-default-sidebar-speaker-list ul li a{
+text-decoration:none!important;}
+
+.mep-default-sidebar-speaker-list ul li img{
+height: 150px;
+    width: 150px;}
+
+.mep_event_list .owl-nav i, .mep_event_list button.owl-next, .mep_event_list button.owl-prev{
+font-size: 45px !important;
+}
+
+.uagb-block-9846c094 .uagb-faq-item{
+background:#fff; border-radius: 5px;
+    padding: 10px 0px;}
+
+.wp-block-uagb-faq-child .uagb-faq-questions-button .uagb-question{
+font-weight: 600;}

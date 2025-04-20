@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Event Booking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('/static/img/birthdayBook.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .container {
+      background: rgba(236, 231, 231, 0.7);
+      padding: 30px;
+      width: 60%;
+      max-width: 700px;
+      border-radius: 15px;
+      box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+      text-align: center;
+      color: rgb(145, 19, 156);
+      font-family: cursive;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      background: #fc734a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #6813a1;
+    }
+
+    .price-info {
+      font-weight: bold;
+      color: #d9534f;
+      margin-top: 5px;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .qr-code {
+      width: 200px;
+      margin-top: 10px;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    .time {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .time select {
+      width: 32%;
+    }
+
+    @media (max-width: 768px) {
+      .time {
+        flex-direction: column;
+      }
+
+      .time select {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    const themePrices = {
+      "3D Themes": 5000,
+      "Animal Themes": 4000,
+      "Rainbow Themes": 4500
+    };
+
+    const essentialsPrices = {
+      "Anchor Artist": 2000,
+      "Bouncy Castle": 2500,
+      "Chocolate Fountain": 2200,
+      "Sound-DJ": 3000,
+      "Magician": 2700,
+      "Tattoo Artist": 2800
+    };
+
+    function updatePrice() {
+      const gstRate = 0.18;
+      let theme = document.getElementById("theme").value;
+      let guests = parseInt(document.getElementById("guests").value) || 0;
+      let basePrice = themePrices[theme] || 0;
+      let totalPrice = basePrice + (guests * 100);
+
+      let essentialsTotal = 0;
+      let essentialsList = document.querySelectorAll('input[name="essentials"]:checked');
+      essentialsList.forEach(item => {
+        essentialsTotal += essentialsPrices[item.value];
+      });
+
+      totalPrice += essentialsTotal;
+      let gstAmount = totalPrice * gstRate;
+      let finalPrice = totalPrice + gstAmount;
+
+      document.getElementById("price-display").innerHTML =
+        `Base Price: ₹${basePrice} + Guests: ₹${guests * 100} + Party Essentials: ₹${essentialsTotal} + GST (18%): ₹${gstAmount.toFixed(2)}
+        <br><strong>Total Price: ₹${finalPrice.toFixed(2)}</strong>`;
+    }
+
+    window.addEventListener("DOMContentLoaded", function () {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById("date").setAttribute('min', today);
+
+      // Populate hour and minute dropdowns
+      const hourSelect = document.getElementById("timehour");
+      const minuteSelect = document.getElementById("minute");
+
+      for (let i = 1; i <= 12; i++) {
+        let opt = document.createElement("option");
+        opt.value = i;
+        opt.textContent = i;
+        hourSelect.appendChild(opt);
+      }
+
+      for (let i = 0; i < 60; i += 5) {
+        let val = i < 10 ? "0" + i : i;
+        let opt = document.createElement("option");
+        opt.value = val;
+        opt.textContent = val;
+        minuteSelect.appendChild(opt);
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>Book Your Birthday Event</h2>
+    <form action="/submit_booking" method="POST" enctype="multipart/form-data">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="guests">Number of Guests:*</label>
+      <input type="number" id="guests" name="guests" min="1" required oninput="updatePrice()">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" pattern="[a-zA-Z]+[0-9]*@gmail\.com" placeholder="abc123@gmail.com">
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" pattern="[6-9]{1}[0-9]{9}" maxlength="10" minlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required>
+
+      <label for="date">Event Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Event Time:</label>
+      <div class="time">
+        <select id="timehour" name="timehour" required>
+          <option value="" disabled selected>Hour</option>
+        </select>
+
+        <select id="minute" name="minute" required>
+          <option value="" disabled selected>Minute</option>
+        </select>
+
+        <select id="ampm" name="ampm" required>
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+
+      <label for="theme">Select Theme:</label>
+      <select id="theme" name="theme" required onchange="updatePrice()">
+        <option value="3D Themes">3D Themes (₹5000)</option>
+        <option value="Animal Themes">Animal Themes (₹4000)</option>
+        <option value="Rainbow Themes">Rainbow Themes (₹4500)</option>
+      </select>
+
+      <label>Select Party Essentials:</label>
+      <div>
+        <input type="checkbox" name="essentials" value="Anchor Artist" onclick="updatePrice()"> Anchor Artist (₹2000)<br>
+        <input type="checkbox" name="essentials" value="Bouncy Castle" onclick="updatePrice()"> Bouncy Castle (₹2500)<br>
+        <input type="checkbox" name="essentials" value="Chocolate Fountain" onclick="updatePrice()"> Chocolate Fountain (₹2200)<br>
+        <input type="checkbox" name="essentials" value="Sound-DJ" onclick="updatePrice()"> Sound-DJ (₹3000)<br>
+        <input type="checkbox" name="essentials" value="Magician" onclick="updatePrice()"> Magician (₹2700)<br>
+        <input type="checkbox" name="essentials" value="Tattoo Artist" onclick="updatePrice()"> Tattoo Artist (₹2800)<br>
+      </div>
+
+      <label for="message">Additional Requests:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <p class="price-info" id="price-display">Total Price: ₹0</p>
+
+      <div class="payment-section">
+        <h3>Scan & Pay</h3>
+        <p>Use the QR Code below to complete the payment</p>
+        <img src="/static/img/upi_payment_qr.jpg" alt="QR Code for Payment" class="qr-code">
+      </div>
+
+      <label for="payment_screenshot">Upload Payment Screenshot:</label>
+      <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Celebrations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+           
+            background-color: #f5f5f5;
+        }
+        .back-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #8a0833; /* Gold */
+            position: absolute;
+            top: 320px;
+            left: 40px;
+            transition: color 0.3s ease;
+        }
+    
+        .back-icon:hover {
+            color: #db6161; /* Silver */
+        }
+
+        h2{
+            color:#af0d0d;
+        }
+        .hero {
+            position: relative;
+            background: url("/static/img/ABG.png") no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .hero-content {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            animation: fadeIn 1.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .title {
+            font-size: 2em;
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0;
+            animation: slideDown 1.5s ease-out forwards;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .event-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    margin: 40px auto;
+    width: 80%;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.image-container {
+    width: 40%;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    animation: imageSlide 6s infinite;
+}
+
+.image-container img:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.image-container img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+.image-container img:nth-child(3) {
+    animation-delay: 4s;
+}
+
+@keyframes imageSlide {
+    0% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+        .details {
+            width: 55%;
+            padding-left: 20px;
+            text-align: left;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .details p1{
+            color:brown;
+        
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .bottom-nav-container {
+    margin-top: 5rem; /* Reduce margin to bring it up */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-nav {
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    width: 100%; /* Adjust width to make it more centered */
+    box-sizing: border-box;
+    position: relative; /* Fixed position to keep it at the bottom */
+    bottom: 20px; /* Moves it 20px above the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 12px;
+}
+
+.bottom-nav a {
+    font-size: 18px;
+    color: #af0d0d;
+    font-weight: bold;
+}
+
+.bottom-nav a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
+
+    </style>
+</head>
+<body>
+    
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Celebrating Love & Togetherness</h1>
+            <p>Join Us for a Special Anniversary Celebration</p>
+        </div>
+    </div>
+    <h2 class="title">Our Planned Anniversaries Till Now...</h2>
+    <div class="back-icon" onclick="window.history.back();">&larr; Back</div>
+    <div class="event-section">
+        <div class="image-container">
+            <img src="/static/img/A1.1.jpg" alt="Couple 1">
+            <img src="/static/img/A1.2.jpg" alt="Couple 1">
+            <img src="/static/img/A1.3.jpg" alt="Couple 1">
+        </div>
+        <div class="details">
+            <h3>John & Emma</h3>
+            <p1><strong>Celebrating their 50th Year Anniversary</strong> </p1>
+            <p><strong>Venue:</strong> Grand Ballroom, NYC</p>
+            <p><strong>Highlights:</strong> A grand celebration with a live orchestra and a fireworks<br>display.</p>
+            <p><strong>Special Guests:</strong> Close family, friends, and special guest speaker <br>Dr. Robert Lane.</p>
+        </div>
+    </div>
+    <div class="event-section">
+        <div class="image-container">
+            <img src="/static/img/A2.1.jpg" alt="Couple 2">
+            <img src="/static/img/A2.2.jpg" alt="Couple 2">
+            <img src="/static/img/A2.3.png" alt="Couple 2">
+        </div>
+        <div class="details">
+            <h3>Michael & Sarah</h3>
+            <p1><strong>Celebrating their 5th Year Anniversary</strong> </p1>
+            <p><strong>Venue:</strong> Ocean View Resort, Miami</p>
+            <p><strong>Highlights:</strong> A beachside vow renewal with an elegant sunset dinner.</p>
+            <p><strong>Special Guests:</strong> Close family, childhood friends, and music<br>performance by a local band.</p>
+        </div>
+    </div>
+    <div class="event-section">
+      
+            <div class="image-container">
+                <img src="/static/img/A3.1.png" alt="Couple 3">
+                <img src="/static/img/A3.2.jpg" alt="Couple 3">
+                <img src="/static/img/A3.3.png" alt="Couple 3">
+            </div>
+        <div class="details">
+            <h3>David & Olivia</h3>
+            <p1><strong>Celebrating their 1st Year Anniversary</strong> </p1>
+            <p><strong>Venue:</strong> Rose Garden, San Fransico</p>
+            <p><strong>Highlights:</strong> A romantic garden party with string lights and a jazz band.</p>
+            <p><strong>Special Guests:</strong> Extended family, colleagues, and a surprise<br> montage from loved ones.</p>
+        </div>
+    </div>
+    <script>
+        const sections = document.querySelectorAll('.event-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+        sections.forEach(section => observer.observe(section));
+    </script>
+
+<div class="bottom-nav-container">
+    <div class="bottom-nav">
+        <a href="{{ url_for('abook') }}">Book Now</a>
+        <a href="{{ url_for('contact') }}">Contact Us</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Themes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0; 
+            background: #ffe2f8;
+        }
+        .banner {
+            background: url('/static/img/BBG.jpg') center/cover no-repeat;
+            padding: 50px;
+            text-align: center;
+            color: black;
+            font-size: 24px;
+            height: 15rem;
+            font-weight: bold;
+            opacity: 0.9;
+        }
+        .banner h1 {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 1rem;
+            color: rgb(128, 22, 128);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .back-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #47031a;            
+     
+  position: relative;
+  right: 580px;
+  top: 60px;                  /* nudge it up a bit */
+  transition: color 0.3s ease;
+}
+
+.back-icon:hover {
+  color: #f15b5b;             /* silver */
+}
+        .themes {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .themes h2{
+            font-family:cursive;
+            font-size: 2rem;
+            color: rgb(253, 152, 85);
+        }
+        .theme-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .theme-box {
+            width: 320px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .theme-box:hover {
+            transform: scale(1.05);
+        }
+        .theme-box img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .theme-content {
+            padding: 15px;
+            color: black;
+        }
+        .theme-title {
+            margin: 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .theme-description {
+            font-size: 14px;
+            color: #555;
+        }
+        .theme-title:hover {
+            color: orange;
+        }
+        .essentials {
+            background: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            max-width: 90%;
+        }
+        .essentials h2 {
+            font-family:cursive;
+            font-size: 2rem;
+            color: rgb(253, 152, 85);
+            margin-bottom: 20px;
+        }
+        .essentials-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 20px 40px;
+            flex-wrap: wrap;
+        }
+        .essential-box {
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideFadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes slideFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Delay effect for each essential box */
+        .essential-box:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .essential-box:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .essential-box:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        /* Hover effect */
+        .essential-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .essential-box img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .essential-title {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        /* Navbar */
+        .navbar {
+            position: relative;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: #fc734a;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 10px 60px; /* Increased top margin to move it down */
+            transition: color 0.3s;
+            display: inline-block; /* Ensures margin/padding works properly */
+        }
+
+        .navbar .nav-links a:hover {
+            color: #6813a1;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1><span>Plan A <br> Memorable <br>Birthday!</h1>
+            <div class="back-icon" onclick="window.history.back();">&larr; Back</div>
+    </div>
+    
+    <section class="themes">
+        <h2>BIRTHDAY THEMES</h2>
+        <p>Surprise your loved ones on their birthday with beautiful decorations, get creative with our guide to the most popular kids’ party ideas and themes.</p>
+        <div class="theme-container">
+         
+            <div class="theme-box">
+                <img src="/static/img/BT2.jpg" alt="3D Themes">
+                <div class="theme-content">
+                    <h3 class="theme-title">3D THEMES</h3>
+                    <p class="theme-description">Immersive 3D-themed decorations to bring your party to life with amazing visuals.</p>
+                </div>
+            </div>
+            <div class="theme-box">
+                <img src="/static/img/BT1.jpeg" alt="Animal Themes">
+                <div class="theme-content">
+                    <h3 class="theme-title">ANIMAL THEMES</h3>
+                    <p class="theme-description">Exciting animal-themed decorations for a jungle-inspired birthday celebration.</p>
+                </div>
+            </div>
+            <div class="theme-box">
+                <img src="/static/img/BT4.jpg" alt="Rainbow Themes">
+                <div class="theme-content">
+                    <h3 class="theme-title">RAINBOW THEMES</h3>
+                    <p class="theme-description">Bright and colorful rainbow-themed decorations to add joy and vibrancy to your celebration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="essentials">
+        <h2>BIRTHDAY PARTY ESSENTIALS</h2>
+        <div class="essentials-container">
+            <div class="essential-box">
+                <img src="/static/img/anchor.png" alt="Anchor Artist">
+                <div class="essential-title">ANCHOR ARTIST</div>
+            </div>
+            <div class="essential-box">
+                <img src="/static/img/bouncy.png" alt="Bouncy Castle">
+                <div class="essential-title">BOUNCY CASTLE</div>
+            </div>
+            <div class="essential-box">
+                <img src="/static/img/choclate.png" alt="Chocolate Fountain">
+                <div class="essential-title">CHOCOLATE FOUNTAIN</div>
+            </div>
+            <div class="essential-box">
+                <img src="/static/img/speaker.jpeg" alt="DJ">
+                <div class="essential-title">SOUND-DJ</div>
+            </div>
+            <div class="essential-box">
+                <img src="/static/img/magician.png" alt="MAGICIAN">
+                <div class="essential-title">MAGICIAN</div>
+            </div>
+            <div class="essential-box">
+                <img src="/static/img/tattoo.png" alt="Tattoo">
+                <div class="essential-title">TATTOO ARTIST</div>
+            </div>
+        </div>
+    </section>
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="{{ url_for('bbook') }}">Book Now</a>
+
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+            </div>
+        </nav>
+    
+</nav>
+</div>
+</body>
+</html>

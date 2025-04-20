@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+<style>
+
+
+.carporate-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/img/business-hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 20px;
+}
+
+.carporate-hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.carporate-hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+.event h3 {
+    margin: 15px 0 10px; /* Adjusted margin to move the heading closer to the image */
+    font-size: 20px; /* Slightly smaller font size for headings */
+    color: #333; /* Darker color for better readability */
+}
+
+.event p {
+    padding: 0 15px;
+    margin: 0 0 20px; /* Adjusted margin to move the paragraph up */
+    font-size: 14px; /* Smaller font size for content */
+    color: #666; /* Softer color for the text */
+    line-height: 1.5; /* Adjusted line height for readability */
+}
+
+
+
+.event-blocks {
+    display: grid;
+    background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+    padding: 40px 20px; /* Increased padding for better spacing */
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for one line */
+    gap: 5px;
+    height: 25rem;
+    padding: 10px;
+    max-width: 1200px; /* Adjust width as needed */
+    margin: 0 auto; /* Center the grid */
+}
+
+.event {
+    position: relative;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 15px; /* Slightly larger radius for a modern look */
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%; /* Ensure equal height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+}
+
+.event:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.event img {
+    width: 100%;
+    height: 200px; /* Adjusted height for better fit in one line */
+    object-fit: cover;
+    border-bottom: 3px solid #4CAF50; /* Add a colored border at the bottom */
+}
+
+    
+    .event h3 {
+        margin: 10px 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .event p {
+        flex-grow: 1; /* Ensures all text takes up the same space */
+    }
+    
+    .cta-button, .details1-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button {
+    position: absolute;
+    bottom: 6px; /* Adjusted position for better spacing */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Slightly smaller padding for compact look */
+    border-radius: 25px; /* Rounded edges for a modern button */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 14px; /* Smaller font size for the button */
+    font-weight: bold; /* Bold text for emphasis */}
+
+.cta-button:hover {
+    background-color: #45a049;
+    transform: translateX(-50%) scale(1.1); /* Slight scale effect on hover */
+}
+
+.details1-button {
+    
+    background-color: #1e8ee9;
+    color: white;
+    border: none;
+}
+
+.details1-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+</style> 
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero carporate-hero">
+        <div class="hero-content">
+            <h1>Connecting professionals with Collaborations</h1>
+            <a href="{{ url_for('bm_details') }}" class="details1-button">Get Details</a>
+        </div>
+    </section>
+    
+    <section class="event-blocks">
+        <div class="event">
+            <img src="/static/img/C1.jpg" alt="Business Meeting">
+            <h3>Business Meetings & Networking</h3>
+            <p>Foster valuable connections and drive professional growth through impactful networking sessions.</p>
+            <a href="{{ url_for('sm_form') }}" class="cta-button">Schedule Now</a>
+        </div>
+        <div class="event">
+            <img src="/static/img/C2.jpg" alt="Product Launch">
+            <h3>Product Launch & Brand Promotions</h3>
+            <p>Unveil innovative products and promote your brand with a high-energy launch event.</p>
+            <a href="{{ url_for('sm_form') }}" class="cta-button">Schedule Now</a>
+        </div>
+        <div class="event">
+            <img src="/static/img/C3.jpeg" alt="Seminars & Workshops">
+            <h3>Seminars & Workshops</h3>
+            <p>Engage with industry experts and elevate skills with interactive seminars and hands-on workshops.</p>
+            <a href="{{ url_for('sm_form') }}" class="cta-button">Schedule Now</a>
+        </div>
+        <div class="event">
+            <img src="/static/img/C4.jpeg" alt="Award Ceremony">
+            <h3>Award Ceremony & Corporate Celebrations</h3>
+            <p>Celebrate excellence and achievements with a grand corporate recognition ceremony.</p>
+            <a href="{{ url_for('sm_form') }}" class="cta-button">Schedule Now</a>
+        </div>
+    </section>
+    
+    <!-- WhatsApp Button -->
+<a href="https://wa.me/919307040184?text=Hello%2C%20I%20need%20event%20information!" target="_blank" id="whatsapp-button">
+    <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp" />
+</a>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KPevents | All Rights Reserved.</p>
+        <p><a href="{{ url_for('home') }}">Home</a> | <a href="{{ url_for('contact') }}">Contact Us</a></p>
+        </div>
+        </footer>
+</body>
+</html>

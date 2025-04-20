@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <link rel="icon" type="png" href="static/img/Events-Logo.png">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+    {% include 'navbar.html' %}
+
+  <!-- Hero Section -->
+  <section class="hero party-hero">
+    <div class="hero-content">
+        <h1>Celebrate Life's Special Moments</h1>
+        <p>Plan your perfect party with us and make memories that last a lifetime.</p>
+    </div>
+</section>
+
+<section class="event-blocks1">
+    <div class="event">
+        <img src="/static/img/E2.jpeg" alt="Wedding Event">
+        <h3>Wedding Event</h3>
+        <p>Celebrate love and union with a grand and memorable wedding celebration.</p>
+        <a href="{{ url_for('wedding_details') }}" class="details-button">Get Details</a>
+    </div>
+   
+    <div class="event">
+        <img src="/static/img/E1.jpg" alt="Anniversary Event">
+        <h3>Anniversary Party</h3>
+        <p>Mark milestones of heartwarming anniversary celebration.</p>
+        <a href="{{ url_for('anniversary_details') }}" class="details-button">Get Details</a>
+    </div>
+    <div class="event">
+        <img src="/static/img/E3.jpeg" alt="Birthday Event">
+        <h3>Birthday Party</h3>
+        <p>Make birthdays extra special with fun, laughter, and unforgettable moments.</p>
+        <a href="{{ url_for('birthday_details') }}" class="details-button">Get Details</a>
+    </div>
+    <div class="event">
+        <img src="/static/img/E5.jpeg" alt="Christmas Party">
+        <h3>Christmas Party</h3>
+        <p>Experience the joy of the season with festive decorations, music, and a cheerful celebration.</p>
+        <a href="{{ url_for('christmas_details') }}" class="details-button">Get Details</a>
+    </div>
+    <div class="event">
+        <img src="/static/img/E6.jpg" alt="New Year Party">
+        <h3>New Year Party</h3>
+        <p>Ring in the New Year with style, music, jazz, fun, entertainment and amazing parties.</p>
+        <a href="{{ url_for('newyear_details') }}" class="details-button">Get Details</a>
+    </div>
+    <div class="event">
+        <img src="/static/img/E4.jpg" alt="Club Party">
+        <h3>DJ night | Club Party</h3>
+        <p>Turn up the night with electrifying beats,and an unforgettable clubbing experience.</p>
+        <a href="{{ url_for('clubparty_details') }}" class="details-button" >Get Details</a>
+    </div>
+</section>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/+918847690116>?text=How can I help you?" target="_blank" id="whatsapp-button">
+    <img src="static/img/whatsapp.png" alt="WhatsApp" >
+</a>
+
+<!-- Footer Section -->
+<footer>
+    <div class="container">
+        <p>&copy; 2025 KPevents | All Rights Reserved.</p>
+        <p><a href="{{ url_for('home') }}">Home</a> | <a href="{{ url_for('contact') }}">Contact Us</a></p>
+    </div>
+    </footer>
+
+</body>
+</html>

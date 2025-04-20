@@ -1,0 +1,36 @@
+<header class="fixed-navbar">
+    <div class="container">
+        <div class="logo">
+            <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/eventlogo.png') }}" alt="Event Management System Logo">
+            </a>
+        </div>
+
+        <!-- Hamburger Button -->
+        <div id="mobile-menu" class="menu-toggle">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="navbar">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Categories</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('party') }}">Party Events</a></li>
+                        <li><a href="{{ url_for('business') }}">Corporate Events</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ url_for('contact') }}">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/919307040184?text=Hello%2C%20I%20need%20event%20information!" target="_blank" id="whatsapp-button">
+            <img src="{{ url_for('static', filename='img/whatsapp.png') }}" alt="WhatsApp" />
+        </a>
+    </div>
+</header>
