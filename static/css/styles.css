@@ -1504,19 +1504,17 @@ input[type="text"].upi-input {
     }
 }
 
-
-
 /* FAQ Section */
 .faq {
     padding: 60px 20px;
-    background-color: #ffffff;  /* Pure white */
+    background-color: #ffffff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .faq h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #070861;;
+    color: #070861;
     text-align: center;
     margin-bottom: 10px;
     margin-top: 0px;
@@ -1527,8 +1525,9 @@ input[type="text"].upi-input {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 40px;
     flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
 }
 
 .faq-container {
@@ -1547,6 +1546,11 @@ input[type="text"].upi-input {
 .faq-image img {
     max-width: 100%;
     height: auto;
+}
+
+.faq-vector {
+    width: 100%;
+    max-width: 300px;
     transition: transform 0.3s ease;
 }
 
@@ -1554,9 +1558,8 @@ input[type="text"].upi-input {
     transform: scale(1.05) rotate(2deg);
 }
 
-
 .faq-item {
-    width: 100%; /* Ensure full width */
+    width: 100%;
     border-radius: 12px;
     margin-bottom: 15px;
     background-color: #fff;
@@ -1578,10 +1581,10 @@ input[type="text"].upi-input {
     color: #34495e;
     background-color: #f1f4f6;
     border: none;
-    text-align: left; /* This ensures the question text is left-aligned */
+    text-align: left;
     cursor: pointer;
     display: flex;
-    justify-content: flex-start; /* Push all content to the left */
+    justify-content: flex-start;
     align-items: center;
     gap: 10px;
     transition: background-color 0.3s ease;
@@ -1618,43 +1621,6 @@ input[type="text"].upi-input {
     transform: rotate(45deg);
     color: #007BFF;
 }
-.faq-layout {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-
-.faq-container {
-    flex: 1 1 60%;
-    max-width: 60%;
-}
-
-.faq-image {
-    flex: 1 1 35%;
-    max-width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.faq-image img {
-    max-width: 100%;
-    height: auto;
-}
-
-
-.faq-vector {
-    width: 100%;
-    max-width: 300px;
-    transition: transform 0.3s ease;
-}
-
-.faq-vector:hover {
-    transform: scale(1.05) rotate(2deg);
-}
 
 /* Smooth floating animation */
 @keyframes float {
@@ -1665,15 +1631,67 @@ input[type="text"].upi-input {
         transform: translateY(-10px);
     }
 }
-@media (max-width: 768px) {
-    .faq-layout {
-        flex-direction: column;
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .faq-container,
+    .faq-image {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .faq h2 {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        font-size: 1em;
     }
 }
 
+@media (max-width: 768px) {
+    .faq-layout {
+        flex-direction: column;
+        gap: 30px;
+        padding: 10px;
+    }
 
+    .faq h2 {
+        font-size: 1.8rem;
+    }
 
+    .faq-vector {
+        max-width: 250px;
+    }
 
+    .faq-question {
+        font-size: 1em;
+        padding: 16px 20px;
+    }
+
+    .faq-answer {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq h2 {
+        font-size: 1.5rem;
+    }
+
+    .faq-question {
+        font-size: 0.95em;
+        padding: 14px 18px;
+    }
+
+    .faq-answer {
+        font-size: 0.9em;
+    }
+
+    .faq-vector {
+        max-width: 200px;
+    }
+}
 
 body {
     overflow-x: hidden;
@@ -2002,59 +2020,118 @@ box-shadow: 0 0 20px #25D366, 0 0 30px #25D366;
     text-decoration: none;
   }
   
-  /* Footer Section */
+/* Footer Container */
 .footer {
     background-color: #0c0c0c;
     color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    transition: background-color 0.3s ease;
-}
-
-.footer .container {
+    padding: 40px 20px;
+  }
+  
+  .footer .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
-}
-
-/* Social Links */
-.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  /* Footer Sections */
+  .footer-section {
+    flex: 1 1 220px;
+    min-width: 200px;
+  }
+  
+  .footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+  }
+  
+  .footer-section p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
-    display: flex;
-    justify-content: center;
-}
-
-.social-links li {
-    margin: 0 15px;
-}
-
-.social-link {
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
     color: #fff;
-    font-size: 16px;
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-link:hover {
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
     color: #5e4bb4;
-    transform: scale(1.1);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
+  }
+  
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    color: #5e4bb4;
+    text-decoration: underline;
+    font-size: 0.95rem;
+  }
+  
+  /* Social Icons */
+  .footer-section.social .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #5e4bb4;
+    transform: scale(1.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer .container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .footer-section {
+      width: 100%;
+      margin-bottom: 25px;
+    }
+  
+    .footer-section ul {
+      padding-left: 0;
+    }
+  
+    .footer-section.social .social-icons {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
     .footer {
-        padding: 20px;
+      padding: 30px 15px;
     }
-    
-    .social-links {
-        flex-direction: column;
-        align-items: center;
+  
+    .footer-section h3 {
+      font-size: 1.1rem;
     }
-    
-    .social-links li {
-        margin: 10px 0;
+  
+    .social-icons a {
+      font-size: 1.3rem;
     }
-}
-
+  }
+  

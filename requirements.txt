@@ -1,2 +1,4 @@
 Flask==2.3.2
 pymongo==4.7.1
+pip install gunicorn
+pip freeze > requirements.txt

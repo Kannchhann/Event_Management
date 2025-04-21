@@ -7,23 +7,33 @@ from bson.objectid import ObjectId  # MongoDB ID handling
 from datetime import datetime, timedelta
 import threading
 import time
-
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Email Configuration
-EMAIL_ADDRESS = "kpevents45@gmail.com"
-EMAIL_PASSWORD = "ohor dama cjgb ndjt"  # Use an app password if needed
+EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")  # Get email from env file
+EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")  # Get app password from env file
 
 # Flask App Initialization
 app = Flask(__name__, static_folder='static')
-app.secret_key = 'your_secret_key'  # Secret key for session management
+app.secret_key = os.getenv("FLASK_SECRET_KEY")  # Use secret key from env file
 
-# MongoDB Setup
-client = MongoClient('mongodb://localhost:27017/')
+# MongoDB Configuration
+MONGO_URI = os.getenv("MONGO_URI")  # MongoDB URI from env file
+client = MongoClient(MONGO_URI)
+
+# Access the database
 db = client['event_management']
+
+# Access collections
 bookings_collection = db['bookings']
-# Contact Enquiry Collection
 contact_collection = db['contact_enquiries']
+
+# Your app routes and logic go here
+
 
 UPLOAD_FOLDER = "static/uploads"
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -248,6 +258,41 @@ def book(package_name):
     package_details = package_details_map.get(package_name, ["Package details not found."])
     return render_template('Wbook_package.html', package_name=package_name, package_details=package_details)
 
+def send_reminder_notification(to_email, name, event_date, event_time, guests, message):
+    msg = MIMEMultipart()
+    msg['From'] = EMAIL_ADDRESS
+    msg['To'] = to_email
+    msg['Subject'] = "📅 Event Reminder: Your Event is Tomorrow!"
+
+    email_body = f"""
+    Dear {name},
+
+    🗓 This is a kind reminder that your event is scheduled for tomorrow!
+
+    📅 Date: {event_date}
+    ⏰ Time: {event_time}
+    👥 Guests: {guests}
+    💬 Special Message: {message}
+
+    If you have any questions, feel free to contact us at kpevents45@gmail.com.
+
+    Looking forward to hosting your event! 🎉
+
+    Best Regards,  
+    KP Event Management Team
+    """
+
+    msg.attach(MIMEText(email_body, 'plain'))
+
+    try:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+            server.starttls()
+            server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            server.sendmail(EMAIL_ADDRESS, to_email, msg.as_string())
+        print(f"✅ Reminder email sent to {to_email}")
+    except Exception as e:
+        print(f"❌ Failed to send reminder email: {e}")
+
 # 📧 Function to Send Confirmation Email
 def send_confirmation_email(to_email, subject, name):
     msg = MIMEMultipart()
@@ -293,7 +338,7 @@ def send_reminder_email():
         bookings = bookings_collection.find({'event_date': tomorrow_str, 'reminder': "Enabled"})
 
         for booking in bookings:
-            send_confirmation_email(
+            send_reminder_notification(
                 booking['email'],
                 "📅 Event Reminder: Your Event is Tomorrow!",
                 booking['name'],
